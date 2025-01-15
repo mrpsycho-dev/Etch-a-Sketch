@@ -8,25 +8,30 @@ const eraser = document.querySelector('.eraser');
 const input = document.querySelector('.input');
 let number = 16;
 let color = 'random';
+let lastSelectedColor = 'random';
+
 document.addEventListener('keydown', function (e) {
-  if (e.key === ' ') {
+  if (e.key === 'Control') {
     color = '';
   }
 });
 document.addEventListener('keyup', function (e) {
-  if (e.key === ' ') {
-    color = 'random';
+  if (e.key === 'Control') {
+    color = lastSelectedColor;
   }
 });
 
 black.addEventListener('click', function () {
   color = 'black';
+  lastSelectedColor = color;
 });
 random.addEventListener('click', function () {
   color = 'random';
+  lastSelectedColor = color;
 });
 eraser.addEventListener('click', function () {
   color = 'white';
+  lastSelectedColor = color;
 });
 
 const getRandomRGBColor = function () {
@@ -37,7 +42,7 @@ const getRandomRGBColor = function () {
 };
 
 const init = function () {
-  grid.innerHTML = '';
+  grid.replaceChildren();
   for (let i = 0; i < number ** 2; i++) {
     let div = document.createElement('div');
     grid.appendChild(div);

@@ -24,12 +24,10 @@ p {
   width: 21rem;
   top: 5%;
   left: 10px;
-  border: 5px solid black;
 }
 .red {
   color: red;
   display: inline;
-  /* z-index: -1; */
 }
 .input {
   width: 13rem;
