@@ -1,11 +1,8 @@
 'use strict';
-
-const container = document.querySelector('.container');
 const grid = document.querySelector('.grid');
 const button = document.querySelector('.button');
 const input = document.querySelector('.input');
-let number = 16 ** 2;
-// console.log(number);
+let number = 16;
 
 const clearAll = function () {
   grid.innerHTML = '';
@@ -15,6 +12,8 @@ const init = function () {
   for (let i = 0; i < number ** 2; i++) {
     let div = document.createElement('div');
     grid.appendChild(div);
+    grid.style.gridTemplateColumns = `repeat(${number}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${number}, 1fr)`;
     div.addEventListener('mouseover', function () {
       div.classList.add('hovered');
     });
@@ -22,10 +21,8 @@ const init = function () {
 };
 init();
 button.addEventListener('click', function () {
-  number = input.value ** 2;
-  // console.log(number);
-  grid.style.gridTemplateColumns = `repeat(${Math.sqrt(number)}, 1fr)`;
-  grid.style.gridTemplateRows = `repeat(${Math.sqrt(number)}, 1fr)`;
-  clearAll();
-  init();
+  number = input.value;
+  if (number >= 1 && number <= 100) {
+    init();
+  }
 });
