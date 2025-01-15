@@ -1,6 +1,6 @@
 'use strict';
 const grid = document.querySelector('.grid');
-const button = document.querySelector('.button');
+const ok = document.querySelector('.ok');
 const black = document.querySelector('.black');
 const random = document.querySelector('.random');
 const eraser = document.querySelector('.eraser');
@@ -8,6 +8,17 @@ const eraser = document.querySelector('.eraser');
 const input = document.querySelector('.input');
 let number = 16;
 let color = 'random';
+document.addEventListener('keydown', function (e) {
+  if (e.key === ' ') {
+    color = '';
+  }
+});
+document.addEventListener('keyup', function (e) {
+  if (e.key === ' ') {
+    color = 'random';
+  }
+});
+
 black.addEventListener('click', function () {
   color = 'black';
 });
@@ -44,7 +55,7 @@ const init = function () {
   }
 };
 init();
-button.addEventListener('click', function () {
+ok.addEventListener('click', function () {
   number = input.value;
   if (number >= 1 && number <= 100) {
     init();
